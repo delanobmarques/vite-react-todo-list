@@ -77,6 +77,7 @@
   
   .list li:has(input:checked) label {
     color: #526d7a;
+    text-decoration:line-through; 
   }
   
   .list {
