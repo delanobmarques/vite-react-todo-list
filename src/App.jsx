@@ -10,6 +10,15 @@ const App = () => {
     return JSON.parse(localValue)
   })  
 
+  const [searchItem, setSearchItem] = useState('');    
+  const [filteredTodos, setFilteredTodos] = useState(todos);
+
+  const handleSearh = (event) => {
+    setSearchItem(event.target.value);
+    const filteredArray = todos.filter(todo => todo.title.toUpperCase().includes(searchItem.toUpperCase()));
+    setFilteredTodos(filteredArray);
+  }
+
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todos))
   }, [todos])
@@ -44,8 +53,20 @@ const App = () => {
     <>
       <NewTodoForm onSubmit={addTodo}/>
       <h1 className="header">Todo List</h1>   
+
+      <form className="search-form">
+        <input 
+            type="text" 
+            placeholder="Enter item to search"
+            value={searchItem}
+            onChange={handleSearh}    
+            id="search-item"
+        />
+      </form>
+
+      
       <TodoList 
-        todos={todos}
+        todos={filteredTodos}
         toggleTodo={toggleTodo}
         deleteTodo={deleteTodo}
       />   

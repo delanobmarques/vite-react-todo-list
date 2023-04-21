@@ -90,6 +90,7 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    width: max-content
   }
   
   .list li label {
@@ -138,4 +139,23 @@
   
   .list li:has(input:checked) label:hover::before {
     background: #006699;
+  }
+
+  .search-form {
+    display: flex;
+    padding-bottom: .75rem;
+  }
+
+  .search-form input{
+    outline: none;
+    border: 1px solid #0088cc;
+    /* background: #006699; */
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    color: #0088cc;
+    width: 100%;
+  }
+
+  .search-form input:focus {
+    border: 1px solid #66ccff;
   }
